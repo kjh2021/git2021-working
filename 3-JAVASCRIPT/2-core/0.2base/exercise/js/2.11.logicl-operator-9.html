@@ -9,14 +9,20 @@
                if (password == 'TheMaster') {
                    alert("welcome!");
                }
-               else if (password == '' || password == null) {
+               else if (password == '') {
+                   alert("canceled");
+               }
+               else if ( password == null) {
                    alert("canceled");
                }
                else {
                    alert("wrong password");
                }
            }
-           else if (userName == '' || userName == null) {
+           else if (userName == '') {
+               alert("canceled");
+           }
+           else if (userName == null) {
                alert("canceled");
            }
            else {
