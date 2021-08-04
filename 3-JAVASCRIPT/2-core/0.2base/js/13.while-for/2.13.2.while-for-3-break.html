@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <script>
+           let sum = 0;
+
+           while (true) {
+               //    빈값: "", 취소: null
+            let value = +prompt("숫자를 입력하세요.", '');
+
+            if (!value) break; // (*)
+
+            //    +"", +null -> Number ->
+            //    !value -> value 값이 false이면(NaN, 0)
+            sum += value;
+
+        }
+        alert( '합계: ' + sum );
+        </script>
+    </body>
+</html>

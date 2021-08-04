@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <script>
+            //"eles"는 정말 필요한가요?
+            function checkAge(age) {
+                if (age > 18) {
+                    return true;
+                } else {
+                    // ...
+                    return confirm('보호자의 동의를 받으셨나요?');
+                }
+            }
+
+            //'?'나'||'를 사용하여 함수 다시 작성하기
+            function checkAge(age) {
+                if (age > 18) {
+                    return true;
+                }
+                // ...
+                return confirm('보호자의 동의를 받으셨나요?');
+            }
+        </script>
+    </body>
+</html>
