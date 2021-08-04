@@ -1,0 +1,73 @@
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+      .container {
+          display: flex;
+          margin: 20px 0px;
+          padding: 10px;
+          border: 1px solid red;
+      }
+      .item {
+        width: 100px;
+        border: 1px solid black;
+        height: 100px;
+        padding: 10px;
+        text-align: center;
+        line-height: 100px;
+      }
+      .container.row {
+          /* flex-direction: flexitem 배치방향 */
+          
+          flex-direction: row;
+      }
+      .container.row-reverse {
+          /* flex-direction: flexitem 배치방향 */
+          
+          flex-direction: row-reverse;
+      }
+      .container.col {
+          flex-direction: column;
+      }
+      .container.col-reverse {
+          flex-direction: column-reverse;
+      }
+  </style>
+</head>
+
+<body>
+    <!-- flex container-->
+    <div class="container">
+        <!-- -->
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+</div>
+
+<div class="container row">
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+</div>
+
+<div class="container row-reverse">
+    <div class="item">7</div>
+    <div class="item">8</div>
+    <div class="item">9</div>
+</div>
+
+<div class="col">
+    <div class="item">10</div>
+    <div class="item">11</div>
+    <div class="item">12</div>
+</div>
+
+<div class="col-reverse">
+    <div class="item">13</div>
+    <div class="item">14</div>
+    <div class="item">15</div>
+</div>
+</body>
+
+</html>

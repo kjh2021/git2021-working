@@ -1,0 +1,16 @@
+<html>
+    <body>
+        <script>
+           alert( alert(1) || 2 || alert(3)); // 1과 2가 순서대로 나오고 3은 출력되지 않는다.
+           // 1단계: alert(1)
+           // 2단계: alert(1) || 2 -> 2
+           // 3단계: 2 || alert(3) -> 2
+           // 4단계: alert(2)
+
+           let result1 = alert(1);  //
+           let result2 = result1 || 2;
+           let result3 = result2 || alert(3);
+           alert(result3);
+        </script>
+    </body>
+</html>

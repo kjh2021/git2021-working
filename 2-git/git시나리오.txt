@@ -1,0 +1,19 @@
+-- git 사용 시나리오 --
+
+
+git: 로컬저장소(local repository), 원격저장소(remote repository)
+ -로컬저장소: 개발자의 pc
+ -원격저장소
+
+:gitlab(회사프로젝트)
+:bitbucket(Jira, Trello 통합)
+:github.com(오픈소스)
+
+.public repository(공개), private repository(내부)
+
+.local repository(공개), private repository(내부)
+
+
+
+.git clone 원격저장소 주소
+: 원격 저장소의 정보 및 버전 파일로 로컬 저장소 및 작업공간 생성

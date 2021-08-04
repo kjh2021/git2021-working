@@ -1,0 +1,12 @@
+<html>
+    <body>
+        <script>
+           if (-1 || 0) alert( 'first' );
+           if (-1 && 0) alert( 'second' );
+           if (null || -1 && 1) alert( 'third' );
+        //    first는 ||(or)의 경우 둘다 true일 경우 왼쪽 행을 우선으로 한다. 또한 둘다 true이므로 first는 출력된다.
+
+        //    third의 경우 ||와 &&(and)의 경우 &&가 우선순위 이므로 null || 1 이 된다. 그 후 오른쪽 행인 1이 true이므로 Third는 출력된다.
+        </script>
+    </body>
+</html>
