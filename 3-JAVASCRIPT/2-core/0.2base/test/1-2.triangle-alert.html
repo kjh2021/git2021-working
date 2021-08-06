@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <script>
+
+            let n = 20;
+
+             for(let i =1; i<= n; i++) {
+                 // 한줄 문자열 저장공간(띄어쓰기 + * )
+                let line = "";
+                 //띄어쓰기 반복문(n-i 만큼 반복)
+                 // 5 - 1 == 4, 5 -2 ==3, 5 - 3 == 2
+
+                 let blank = " ".repeat(n - i)
+
+                 //별표 반복문(2i-1 만큼 반복)
+                 // i==1 ->, i==2 -> 3, ......5, 7, 9
+                 let star = "*".repeat(2 * i - 1)
+                     
+                 console.log(" ".repeat(n - 1) + "*". repeat(2 * i - 1));
+                 }
+                 
+             
+           
+        </script>
+    </body>
+</html>

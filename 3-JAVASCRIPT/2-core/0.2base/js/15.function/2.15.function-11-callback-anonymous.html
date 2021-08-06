@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <script>
+           
+           function ask(question, yes, no) {
+               if (confirm(question)) yes()
+               else no();
+           }
+
+        //    익명 함수: anonymous function
+        //    익명 함수를 콜백으로 전달
+           ask(
+               "동의하십니까?",
+               function () {alert("동의하셨습니다."); },
+               function () {alert("취소버튼을 누르셨습니다."); }
+           )
+        </script>
+    </body>
+</html>
