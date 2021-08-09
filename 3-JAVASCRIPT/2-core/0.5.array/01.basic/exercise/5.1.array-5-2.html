@@ -4,24 +4,26 @@
            function getMaxSubSum(arr) {
                let max = 0;
                let temp = 0;
-            // 처음부터 끝까지 요소를 탐색
-            // length: 5, 0 ~ 4
 
-            // 예) []
-               for(let i = 0; i<arr.length; i++){
-                   for( let j = i; j < arr.length; j++) {
-                       //현재 요소와 이전 합산을 더함
-                       temp += arr[j];
-                    //   1: 1, -1, 2, 6, -3, 3
-                    //   -2: -2, 1, 5, -4, 2
-                    //   3: 3, 7, -2, 4
-                    //   4: 4, -5, 1
-                    //   -9: -9, -3
-                    //   6: 6 
-                   }
+               // 예) [1, -2, 3, 4, -9, 6]
+               for (let item of arr) {
+                   temp += item; // 부분 합산 값 계산
+
+                   // 현재 부분 합산 값이 최대 합산 값보다 크면 최대값으로
+                   if (temp > max) {
+                       max = temp;
+                    }
+
+                    // 현재 부분 합산 값이 0보다 작으면 부분 합산 값을 0으로
+                    if (temp < 0) {
+                        temp = 0;
+                    }
                 }
-               return max;
-           }
+
+                // O(n)의 복잡도
+                
+                return max;
+            }
 
            let test = [
                [1, -2, 3, 4, -9, 6], // 7
