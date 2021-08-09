@@ -1,9 +1,33 @@
 <html>
     <body>
         <script>
-           let  styles = ["Jazz", "Blues"];
-           
-           styles.push("Rock-n-Roll");
+           // 1. 배열 생성
+           let styles = ["Jazz", "Blues"];
+           console.log(styles);
+
+        // 2. 배열 끝에 추가
+        styles.push("Rock-n-Roll");
+        console.log(styles);
+
+        // 3. 배열 중간 요소 바꾸기
+        console.log[Math.floor((styles.length -1) / 2)] = "classics"
+        console.log(styles);
+
+        // 4. 배열 첫번째 요소 꺼내기
+        console.log(styles.shift());
+        console.log(styles);
+
+        // 5. Rap, Reggae
+        // for(let style of ["Rap", "Reggae"]) {
+        //     styles.unshift(addItem);
+        // }
+        // console.log(styles);
+
+        // 5-1. 배열 앞치기 뒤에 나옴
+        // 배열. concat(배열1, 배열2......)
+        // 합쳐진 새로운 배열을 반환함.
+        styles = ["Rap", "Reggae"].concat(styles);
+        console.log(styles);
         </script>
     </body>
 </html>
