@@ -1,16 +1,27 @@
 <html>
     <body>
         <script>
-        //    let schedule = {};
+        // isEmpty 함수 만들기
+        // 객체에 프로퍼티가 하나도 없는경우 true,
+        // 그렇지 않은 경우 false
+        function isEmpty(obj) {
+            for(let prop in obj) {
+                // 속성 개수만큼 반복
+                // 이 반복문이 실행된다면 속성이 있다는 얘기
+                for (let prop in obj) {
+                    return false;
+                }
+                return true;
+            }
+        }
+        let schedule = {};  // 비어 있는 객체
+        console.log(schedule);
+        alert( isEmpty(schedule) ); // true
 
-        //    alert( isEmpty(schedule) ); // true
+        schedule["8:30"] = "get up";
 
-        //    schedule["8:30"] = "get up";
+        alert( isEmpty(schedule) ); // false
 
-        //    alert( isEmpty(schedule) ); // false
-
-           function isEmpty(obj) {
-               for ......
         </script>
     </body>
 </html>
