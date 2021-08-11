@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <script>
+      function truncate(str, maxlength) {
+          return str.length > maxlength-1
+          ? str.substr(0, maxlength - 1) + "_"
+          : str;
+      }
+
+      console.log(truncate("What I'd like to tell on this topic is:"));
+      console.log(truncate("Hi everyone!", 20));
+      // gamification: 게임화
+    </script>
+  </body>
+</html>
