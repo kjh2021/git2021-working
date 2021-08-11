@@ -1,10 +1,18 @@
 <html>
   <body>
     <script>
-      function sortByAge(arr) {
+      function sortByAge(users) {
         arr.sort((a, b) => a.age - b.age);
       }
 
+      function sortBykey(arr, key){
+          if(typeof arr[0][key] == "number"){
+              arr.sort((a, b) => a[key] - b[key])
+          }else if(typeof arr[0][key] == "string") {
+              console.log("string")
+              arr.sort((a, b) => Number(a[key])- Number(b[key]))
+          }
+      }
       let john = { name: "John", age: 25 };
       let pete = { name: "Pete", age: 30 };
       let mary = { name: "Mary", age: 28 };
@@ -12,8 +20,9 @@
       let arr = [pete, john, mary];
 
       sortByAge(arr);
+      console.log(Arr);
 
-      // now: [john, mary, pete]
+      //now: [john, mary, pete]
       console.log(arr[0].name); // John
       console.log(arr[1].name); // Mary
       console.log(arr[2].name); // Pete
