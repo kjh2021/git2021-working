@@ -49,15 +49,28 @@
         추가
       </button>
     </form>
-    <ul id="ul-list" class="list-group list-group-flush mt-3"></ul>
-    <table></table>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+        <th>#</th>
+        <th>이름</th>
+        <th>전화번호</th>
+        <th>이메일</th>
+        <th>작업</th>
+      </tr>
+      </thead>
+      <tbody id = 'tbody'>
+        
+      </tbody>
+    </table>
+
     <script>
       const txtMemo1 = document.querySelector("#txt-memo-1");
       const txtMemo2 = document.querySelector("#txt-memo-2");
       const txtMemo3 = document.querySelector("#txt-memo-3");
       const btnAdd = document.querySelector("#btn-add");
-      const ulList = document.querySelector("#ul-list");
       const formInput = document.querySelector("#form-input");
+      const tbody = document.querySelector("#tbody");
 
       txtMemo1.addEventListener("keyup", (event) => {
         if (event.keyCode == 13) {
@@ -81,8 +94,7 @@
       });
 
       btnAdd.addEventListener("click", add);
-
-      ulList.addEventListener("click", remove);
+      tbody.addEventListener("click", remove);
 
       function add(event) {
         console.log(txtMemo1.value);
@@ -125,74 +137,29 @@
           return;
         }
 
-        const li = `
-        <li class="list-group-item">
-          <button class="btn btn-outline-secondary btn-sm remove">삭제</button>          
-          ${txtMemo1.value}
-        </li>
-        `;
+        const tr = `
+        <tr>
+        <td>#</td>
+        <td>${txtMemo1.value}</td>
+        <td>${txtMemo2.value}</td>
+        <td>${txtMemo3.value}</td>
+        <td><button class="btn btn-outline-secondary btn-sm remove">삭제</button></td>
+        </tr>          
+        `
+        ;
 
-        const li = `
-        <li class="list-group-item">
-          <button class="btn btn-outline-secondary btn-sm remove">삭제</button>          
-          ${txtMemo2.value}
-        </li>
-        `;
-
-        const li = `
-        <li class="list-group-item">
-          <button class="btn btn-outline-secondary btn-sm remove">삭제</button>          
-          ${txtMemo3.value}
-        </li>
-        `;
-
-        ulList.insertAdjacentHTML("afterbegin", li);
-
+        tbody.insertAdjacentHTML("afterend", tr);
         formInput.reset();
       }
 
       function remove(event) {
         if (event.target.className.includes("remove")) {
           const btnRemove = event.target;
-          const li = btnRemove.parentNode;
-          li.remove();
+          const rm = btnRemove.parentNode;
+          rm.remove();
+          
         }
       }
     </script>
-      <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">이름</th>
-      <th scope="col">전화번호</th>
-      <th scope="col">E-mail</th>
-      <th scope="col">''</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <th scope="col">''</tr>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <th scope="col">''</tr>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-      <th scope="col">''</tr>
-    </tr>
-  </tbody>
-</table>
-      
-   
   </body>
 </html>
