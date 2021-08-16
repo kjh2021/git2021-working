@@ -60,6 +60,7 @@
       </tr>
       </thead>
       <tbody id = 'tbody'>
+        <tr></tr>
         
       </tbody>
     </table>
@@ -139,7 +140,7 @@
 
         const tr = `
         <tr>
-        <td>#</td>
+        <td>${num++}</td>
         <td>${txtMemo1.value}</td>
         <td>${txtMemo2.value}</td>
         <td>${txtMemo3.value}</td>
@@ -148,16 +149,17 @@
         `
         ;
 
-        tbody.insertAdjacentHTML("afterend", tr);
+        tbody.insertAdjacentHTML("afterbegin", tr);
         formInput.reset();
       }
+
+      let num = 1;
 
       function remove(event) {
         if (event.target.className.includes("remove")) {
           const btnRemove = event.target;
-          const rm = btnRemove.parentNode;
+          const rm = btnRemove.parentNode.parentNode;
           rm.remove();
-          
         }
       }
     </script>
