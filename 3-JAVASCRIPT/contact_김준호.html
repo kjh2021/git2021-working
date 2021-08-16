@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <title>연락처 관리</title>
+  </head>
+
+  <body style="width: 500px" class="mx-auto">
+    <h2 class="text-center my-5">연락처 관리</h2>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+
+    <form id="form-input" class="d-flex" onsubmit="return false">
+      <input
+        id="txt-memo-1"
+        type="text"
+        class="form-control me-2"
+        placeholder="이름"
+      />
+      <input
+        id="txt-memo-2"
+        type="text"
+        class="form-control me-2"
+        placeholder="전화번호"
+      />
+      <input
+        id="txt-memo-3"
+        type="text"
+        class="form-control me-2"
+        placeholder="이메일"
+      />
+      <button id="btn-add" type="button" class="btn btn-primary text-nowrap">
+        추가
+      </button>
+    </form>
+    <ul id="ul-list" class="list-group list-group-flush mt-3"></ul>
+    <table></table>
+    <script>
+      const txtMemo1 = document.querySelector("#txt-memo-1");
+      const txtMemo2 = document.querySelector("#txt-memo-2");
+      const txtMemo3 = document.querySelector("#txt-memo-3");
+      const btnAdd = document.querySelector("#btn-add");
+      const ulList = document.querySelector("#ul-list");
+      const formInput = document.querySelector("#form-input");
+
+      txtMemo1.addEventListener("keyup", (event) => {
+        if (event.keyCode == 13) {
+          txtMemo.blur();
+          add(event);
+        }
+      });
+
+      txtMemo2.addEventListener("keyup", (event) => {
+        if (event.keyCode == 13) {
+          txtMemo.blur();
+          add(event);
+        }
+      });
+
+      txtMemo3.addEventListener("keyup", (event) => {
+        if (event.keyCode == 13) {
+          txtMemo.blur();
+          add(event);
+        }
+      });
+
+      btnAdd.addEventListener("click", add);
+
+      ulList.addEventListener("click", remove);
+
+      function add(event) {
+        console.log(txtMemo1.value);
+        console.log(txtMemo2.value);
+        console.log(txtMemo3.value);
+
+        if (!txtMemo1.value) {
+          const alertDiv = `
+          <div class="alert alert-danger alert-dismissible my-2" role="alert" id="liveAlert">
+            입력값을 입력해주세요.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>    
+          `;
+          formInput.insertAdjacentHTML("afterend", alertDiv);
+
+          return;
+        }
+
+        if (!txtMemo2.value) {
+          const alertDiv = `
+          <div class="alert alert-danger alert-dismissible my-2" role="alert" id="liveAlert">
+            입력값을 입력해주세요.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>    
+          `;
+          formInput.insertAdjacentHTML("afterend", alertDiv);
+
+          return;
+        }
+
+        if (!txtMemo3.value) {
+          const alertDiv = `
+          <div class="alert alert-danger alert-dismissible my-2" role="alert" id="liveAlert">
+            입력값을 입력해주세요.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>    
+          `;
+          formInput.insertAdjacentHTML("afterend", alertDiv);
+
+          return;
+        }
+
+        const li = `
+        <li class="list-group-item">
+          <button class="btn btn-outline-secondary btn-sm remove">삭제</button>          
+          ${txtMemo1.value}
+        </li>
+        `;
+
+        const li = `
+        <li class="list-group-item">
+          <button class="btn btn-outline-secondary btn-sm remove">삭제</button>          
+          ${txtMemo2.value}
+        </li>
+        `;
+
+        const li = `
+        <li class="list-group-item">
+          <button class="btn btn-outline-secondary btn-sm remove">삭제</button>          
+          ${txtMemo3.value}
+        </li>
+        `;
+
+        ulList.insertAdjacentHTML("afterbegin", li);
+
+        formInput.reset();
+      }
+
+      function remove(event) {
+        if (event.target.className.includes("remove")) {
+          const btnRemove = event.target;
+          const li = btnRemove.parentNode;
+          li.remove();
+        }
+      }
+    </script>
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">이름</th>
+      <th scope="col">전화번호</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">''</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <th scope="col">''</tr>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+      <th scope="col">''</tr>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+      <th scope="col">''</tr>
+    </tr>
+  </tbody>
+</table>
+      
+   
+  </body>
+</html>
