@@ -52,16 +52,15 @@
     <table class="table table-striped">
       <thead>
         <tr>
-        <th>#</th>
-        <th>이름</th>
-        <th>전화번호</th>
-        <th>이메일</th>
-        <th>작업</th>
-      </tr>
+          <th>#</th>
+          <th>이름</th>
+          <th>전화번호</th>
+          <th>이메일</th>
+          <th>작업</th>
+        </tr>
       </thead>
-      <tbody id = 'tbody'>
+      <tbody id="tbody">
         <tr></tr>
-        
       </tbody>
     </table>
 
@@ -119,7 +118,7 @@
           <div class="alert alert-danger alert-dismissible my-2" role="alert" id="liveAlert">
             입력값을 입력해주세요.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>    
+          </div>
           `;
           formInput.insertAdjacentHTML("afterend", alertDiv);
 
@@ -146,9 +145,7 @@
         <td>${txtMemo3.value}</td>
         <td><button class="btn btn-outline-secondary btn-sm remove">삭제</button></td>
         </tr>          
-        `
-        ;
-
+        `;
         tbody.insertAdjacentHTML("afterbegin", tr);
         formInput.reset();
       }

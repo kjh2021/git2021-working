@@ -1,0 +1,18 @@
+<html>
+  <body>
+    <button id ="btn-add">입력</button>
+    <script>
+        const button = document.querySelector('#btn-add');
+
+        button.addEventListener("click", add);
+
+        function add(event) {
+        console.log(button.value);
+        
+        if(!button.value) {
+            alert('입력')
+        }
+        }
+    </script>
+  </body>
+</html>
