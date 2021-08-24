@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-
-
+import React, { useRef, useState } from "react";
 
  interface FeedState {
    id: number;
    content?: string | undefined;
    dataUrl?: string | undefined;
-   fileType?: string | undefined;
+   Type?: "video/mp4";
    createTime: number;
    modifyTime?: number;
    isEdit?: boolean;
@@ -24,27 +22,30 @@ import React, { useState } from "react";
    const fileRef = useRef<HTMLInputElement>(null);
    const formRef = useRef<HTMLFormElement>(null);
 
-   const add = {e: React.KeyboardEvent<HTMLInputElement> | null} => {
-     if (e) {
-       if (e.code !== "Enter") return;
-     }
-
+   const add = () => {
+    
      if (fileRef.current?.files?.length) {
        const file = fileRef.current?.files[0];
        const reader = new FileReader();
+       const textMemo = textRef.current?.value;
+       const datetype = file.type;
        reader.readAsDataURL(file);
 
        reader.onload = () => {
-         post(reader.result?.toString(), file.type);
+        const baseCode = reader.result
+        console.log(baseCode)
+        const date1 : FeedState = {
+          id: feedList.length > 0 ? feedList[0].id + 1 : 1,
+          createTime: new Date().getTime(),
+          content: textMemo,
+          dataUrl: baseCode?.toString()
+        }
+        setFeedList([date1, ...feedList]);
        };
-     } else {
-       post(undefined, undefined);
+       formRef.current?.reset();
      }
    };
     
-   const post = (dataUrl: string | undefined, fileType: string | undefined) => {
-   };
-
    const del = (id: number) => {
      setFeedList(feedList.filter((item) => item.id !== id));
    };
@@ -64,59 +65,72 @@ import React, { useState } from "react";
            type="file"
            className="form-control me-1"
            accept="image/png, image/jpeg, video/mp4"
-           ref={textRef}
+           aria-describedby="inputGroupFileAddon04"
+           aria-label="upload"
+           ref={fileRef}
            />
            <button 
             type="button"
             className="btn btn-primary text-nowrap"
             onClick={() => {
-             add(null);
+             add();
            }}
            >
              입력
            </button>
         </div>
      </form>
-     <div className= "mt-3>
-     {feedList.map((item) => (
-       <div className = "card mt-1" key={item.id}>
-         {item.fileType &&
-         (item.fileType?.includes("image") ? (
-           <img
-           src={item.dataUrl}
-           className="card-img-top"
-           alt={item.content}
-           />
-         ) : (
-           <video class="card-img-top" controls>
-             <source src={item.dataUrl} type="video/mp4"></source>
-           </video>
-         ))}
-         <div className="card-body">
-           <p className="card-text">{item.content}</p>
-           <div className= "d-flex">
-           <div className="w-100">
-             <span className="text-secondary">
-               {getTimeString(
-                 item.modifyTime ? item.modifyTime : item.crateTime
-               )}
-             </span>
-           </div>
-         </div>
-         <a 
-          href="#!"
-          onClick={(e) => {
-            e.preventDefault();
-            del(item.id);
-          }}
-          className="link-secondary fs-6 text-nowrap"
-        >
-          삭제
-        </a>
-        </div>
-        </div>
-   ))}
-   </div>
+     {feedList.map((item) =>
+        item.Type === "video/mp4" ? (
+          <div key={item.id} className="card">
+            <video controls>
+              <source src={item.dataUrl} type="video/mp4"></source>
+            </video>
+            <p className="card-text">{item.content}</p>
+            <div className="card-body d-flex">
+              <span className="w-100">
+                {getTimeString(
+                  item.modifyTime ? item.modifyTime : item.createTime
+                )}
+              </span>
+              <a
+                onClick={() => {
+                  del(item.id);
+                }}
+                href="#!"
+                className="link-secondary fs-6 float-end text-nowrap"
+              >
+                삭제
+              </a>
+            </div>
+          </div>
+        ) : (
+          <div key={item.id} className="card">
+            <img src={item.dataUrl} className="card-img-top" alt="…" />
+            <p className="card-text">{item.content}</p>
+            <div className="card-body d-flex">
+              <span className="w-100">
+                {getTimeString(
+                  item.modifyTime ? item.modifyTime : item.createTime
+                )}
+              </span>
+              <a
+                onClick={() => {
+                  del(item.id);
+                }}
+                href="#!"
+                className="link-secondary fs-6 float-end text-nowrap"
+              >
+                삭제
+              </a>
+            </div>
+          </div>
+        )
+      )}
+        
+        
+       
+   
    </>
    );
  };
